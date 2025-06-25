@@ -1,0 +1,16 @@
+AmazonQ.md
+CLAUDE.md
+configs/custom.json
+configs/generated
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+#Notes files
+notes/

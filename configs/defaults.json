@@ -1,0 +1,47 @@
+{
+  "aws": {
+    "region": "ca-central-1"
+  },
+  "eks": {
+    "cluster_name": "gitlab-eks-auto",
+    "version": "1.32"
+  },
+  "iam": {
+    "role_name": "gitlab-runner-role"
+    },
+  "gitlab": {
+    "namespace": "gitlab",
+    "service_account": "gitlab-runner-sa",
+    "url": "https://gitlab.com/",
+    "concurrent_jobs": 10,
+    "chart_version": "0.55.0",
+    "resources": {
+      "limits": {
+        "memory": "256Mi",
+        "cpu": "200m",
+        "ephemeral_storage": "5Gi"
+      },
+      "requests": {
+        "memory": "128Mi",
+        "cpu": "100m",
+        "ephemeral_storage": "1Gi"
+      }
+    },
+    "health_check": {
+      "livenessProbe": {
+        "initialDelaySeconds": 60,
+        "periodSeconds": 10,
+        "timeoutSeconds": 3,
+        "successThreshold": 1,
+        "failureThreshold": 3
+      },
+      "readinessProbe": {
+        "initialDelaySeconds": 10,
+        "periodSeconds": 10,
+        "timeoutSeconds": 3,
+        "successThreshold": 1,
+        "failureThreshold": 3
+      }
+    }
+  }
+}

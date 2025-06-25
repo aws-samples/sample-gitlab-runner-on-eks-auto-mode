@@ -1,0 +1,50 @@
+{
+  "aws": {
+    "region": "us-west-2",
+    "tags": {
+      "Environment": "staging",
+      "Project": "gitlab-runners",
+      "Owner": "myteam"
+    }
+  },
+  "eks": {
+    "cluster_name": "my-gitlab-runners",
+    "version": "1.32"
+  },
+  "gitlab": {
+    "namespace": "gitlab-runners",
+    "service_account": "my-gitlab-runner-sa",
+    "url": "https://gitlab.example.com/",
+    "runner_token": "glrt-xxxxxxxxxxxxxxxxxxxx",
+    "concurrent_jobs": 20,
+    "chart_version": "0.55.0",
+    "resources": {
+      "limits": {
+        "memory": "512Mi",
+        "cpu": "500m",
+        "ephemeral_storage": "10Gi"
+      },
+      "requests": {
+        "memory": "256Mi",
+        "cpu": "250m",
+        "ephemeral_storage": "5Gi"
+      }
+    },
+    "health_check": {
+      "livenessProbe": {
+        "initialDelaySeconds": 90,
+        "periodSeconds": 15,
+        "timeoutSeconds": 5,
+        "successThreshold": 1,
+        "failureThreshold": 3
+      },
+      "readinessProbe": {
+        "initialDelaySeconds": 20,
+        "periodSeconds": 15,
+        "timeoutSeconds": 5,
+        "successThreshold": 1,
+        "failureThreshold": 3
+      }
+    }
+  }
+}
