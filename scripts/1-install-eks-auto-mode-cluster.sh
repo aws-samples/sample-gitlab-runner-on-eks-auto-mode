@@ -70,7 +70,7 @@ echo "- GitLab Service Account: $GITLAB_SERVICE_ACCOUNT"
 
 
 
-
+mkdir -p ../configs/generated
 
 # Create EKS cluster config file
 echo "Creating EKS cluster config file..."
